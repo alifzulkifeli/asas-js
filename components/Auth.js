@@ -3,7 +3,7 @@ import pb from './../lib/pocketbase';
 const Auth = () => {
 const router = useRouter();
   // let provs = providers.authProviders
-    let redirectUrl = 'http://localhost:3000/redirect'
+    let redirectUrl = process.env.NEXT_PUBLIC_REDIRECT_URL
 
   const startLogin = async () => {
     // localStorage.setItem("provider", JSON.stringify(prov));

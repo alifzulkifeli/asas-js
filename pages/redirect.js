@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 const Redirect = () => {
   const router = useRouter();
-  let redirectUrl = 'http://localhost:3000/redirect'
+  let redirectUrl = process.env.NEXT_PUBLIC_REDIRECT_URL
 
 
   useEffect(() => {
