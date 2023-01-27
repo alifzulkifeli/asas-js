@@ -22,9 +22,9 @@ const Layout = ({ children }) => {
      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
      <div>
             <div className="flex items-center justify-between md:py-3 py-2 md:block">
-              <Link href="/">
+              <button onClick={() => router.push("/")}>
                 <h2 className="text-2xl font-bold text-white">Asas Javascript</h2>
-              </Link>
+              </button>
               <div className="md:hidden">
                 <button
                   className=" text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
