@@ -8,8 +8,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Layout/>
+      <Layout>
+        <Handler>
       <Component {...pageProps} />
+        </Handler>
+      </Layout>
     </>
   )
 }
