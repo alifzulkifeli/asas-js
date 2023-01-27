@@ -2,6 +2,7 @@ import { useState } from 'react';
 import pb from './../lib/pocketbase';
 import { useRouter } from 'next/router';
 import NoSSR from 'react-no-ssr';
+import Link from 'next/link';
 
 const Layout = ({ children }) => {
   const [navbar, setNavbar] = useState(false);
@@ -21,9 +22,9 @@ const Layout = ({ children }) => {
      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
      <div>
             <div className="flex items-center justify-between md:py-3 py-2 md:block">
-              <a href="/">
+              <Link href="/">
                 <h2 className="text-2xl font-bold text-white">Asas Javascript</h2>
-              </a>
+              </Link>
               <div className="md:hidden">
                 <button
                   className=" text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
