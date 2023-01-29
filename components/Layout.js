@@ -14,15 +14,12 @@ const Layout = ({ children }) => {
 
   return (
     // create header and footer using tailwind
-    <div className="flex flex-col ">
-     
-
-
-     <nav className="w-full bg-pink-900 shadow">
-     <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
-     <div>
+    <div className="flex flex-col h-screen justify-between">
+      <nav className="w-full bg-pink-900 shadow">
+        <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+          <div>
             <div className="flex items-center justify-between md:py-3 py-2 md:block">
-              <button onClick={() => router.push("/")}>
+              <button onClick={() => router.push('/')}>
                 <h2 className="text-2xl font-bold text-white">Asas Javascript</h2>
               </button>
               <div className="md:hidden">
@@ -63,7 +60,7 @@ const Layout = ({ children }) => {
               </div>
             </div>
           </div>
-     
+
           <div>
             <div
               className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
@@ -71,63 +68,65 @@ const Layout = ({ children }) => {
             >
 
 
-<NoSSR>
-              <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-              {pb.authStore.isValid  && (
-                  <button
-                    onClick={handleLogout}
-                    className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                  >
-                    Logout
-                  </button>) 
-                }
-                
+              <NoSSR>
+                <div className="mt-3 space-y-2 lg:hidden md:inline-block">
+                  {pb.authStore.isValid && (
+                    <button
+                      onClick={handleLogout}
+                      className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>)
+                  }
 
-              </div>
+
+                </div>
               </NoSSR>
             </div>
           </div>
 
           <NoSSR>
 
-        <div className="hidden space-x-2 md:inline-block">
-            {
-              pb.authStore.isValid && (
-                <button
-                  onClick={handleLogout}
-                  className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                >
-                  Logout
-                </button>)
-            }
+            <div className="hidden space-x-2 md:inline-block">
+              {
+                pb.authStore.isValid && (
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+                  >
+                    Logout
+                  </button>)
+              }
 
-          </div> 
+            </div>
           </NoSSR>
         </div>
       </nav>
 
 
 
-    
-          {/* Replace with your content */}
-          <div className="  min-h-screen ">
-            {children}
-          </div>
-          {/* /End replace */}
-     
+
+      {/* Replace with your content */}
+      {/* <div className=" ">
+        <div className='h-full' > */}
+<div className='bg-[#1A1A1A]' >
+    {children}
+</div>
+ 
+
+        {/* </div>
+   
+
+      </div> */}
+      {/* /End replace */}
 
 
 
-      <nav className="w-full bg-pink-900 shadow">
 
-
+      <nav className="w-full bg-pink-900 shadow ">
         <div className=' text-center text-white' >
           {/* create copyright footer */}
-
-
           <footer>&copy; Copyright {new Date().getFullYear()} Aliff</footer>
-
-
         </div>
       </nav>
 
