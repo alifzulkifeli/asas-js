@@ -12,6 +12,9 @@ const Handler = ({children}) => {
     }
   },  [router.isReady])
 
+
+
+
   return ( 
   <div>
     {children}

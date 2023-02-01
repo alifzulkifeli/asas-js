@@ -1,12 +1,16 @@
-import questions from "../../data/quiz1.json";
+import q from "../../data/js.json";
 import { useState } from 'react';
+import { useRouter } from 'next/router'
+import pb from './../../lib/pocketbase';
 
-
-const Q1 = () => {
-
+const Quiz = () => {
+  const router = useRouter()
+  const { quiz_no } = router.query
+  const questions = q[quiz_no]
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
+
 
 
   const handlePrevious = () => {
@@ -49,7 +53,15 @@ const Q1 = () => {
 
   return (
 
-    <div className="flex flex-col  flex-grow  w-full  px-5 bg-[#1A1A1A] justify-center items-center">
+    <>
+    { questions ? (
+      <div className=" grid md:grid-cols-9" >
+
+      
+      <div className="col-span-2 hidden md:block bg-[#1A1A1A] h-screen w-full ">
+      </div>
+      <div className="flex flex-col md:col-span-5  flex-grow px-5 justify-center items-center pb-10 w-auto ">
+      
       {showScore ? (
         <h1 className="text-3xl font-semibold text-center text-white">
           You scored {score} out of {questions.length}
@@ -68,7 +80,7 @@ const Q1 = () => {
 
 
 
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full display-linebreak">
             {questions[currentQuestion].answerOptions.map((answer, index) => (
               <div
                 key={index}
@@ -89,10 +101,6 @@ const Q1 = () => {
               </div>
             ))}
           </div>
-
-
-
-
 
           <div className="flex justify-between w-full mt-4 text-white">
             <button
@@ -116,8 +124,18 @@ const Q1 = () => {
       )
       }
       
-    </div>);
+    </div>
+    </div> 
+    ) : (
+     <div>
+        <h1 className="text-center text-white font-bold text-3xl " >Quiz not found</h1>
+     </div> 
+    )}
+    </>
+   
+
+    );
 }
 
-export default Q1;
+export default Quiz;
 

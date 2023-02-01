@@ -3,7 +3,7 @@
     "question": "What type of framework is Next.js?",
     "answerOptions": [
       { "answer": "Frontend" },
-      { "answer": "Backend" },
+      { "answer": "Backend Backend Backend \n Backend Backend Backend Backend Backend \nBackend Backend Backend Backend Backend Backend Backend \n Backend Backend Backend Backend" },
       { "answer": "FullStack", "isCorrect": true },
       { "answer": "None of the above" }
     ]

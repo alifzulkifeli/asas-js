@@ -12,14 +12,23 @@ const Layout = ({ children }) => {
     router.push('/login');
   };
 
+
+  
+  const auth = () => {
+    if (!pb.authStore.isValid) {
+      router.push('/login');
+    }
+  }
+
   return (
     // create header and footer using tailwind
-    <div className="flex flex-col h-screen justify-between">
+    <div  onLoad={auth} className=" ">
+      
       <nav className="w-full bg-pink-900 shadow">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
             <div className="flex items-center justify-between md:py-3 py-2 md:block">
-              <button onClick={() => router.push('/')}>
+              <button onClick={() => router.reload('/')}>
                 <h2 className="text-2xl font-bold text-white">Asas Javascript</h2>
               </button>
               <div className="md:hidden">
@@ -109,9 +118,9 @@ const Layout = ({ children }) => {
       {/* Replace with your content */}
       {/* <div className=" ">
         <div className='h-full' > */}
-<div className='bg-[#1A1A1A]' >
-    {children}
-</div>
+      <div className='grid   h-screen bg-[#1A1A1A] content-center' >
+          {children}
+      </div>
  
 
         {/* </div>
