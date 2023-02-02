@@ -2,6 +2,7 @@ import q from "../../data/js.json";
 import { useState } from 'react';
 import { useRouter } from 'next/router'
 import pb from './../../lib/pocketbase';
+import { useEffect } from 'react';
 
 const Quiz = () => {
   const router = useRouter()
@@ -11,6 +12,14 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
 
+    
+
+  useEffect(() => {
+    if (!localStorage.getItem('provider')) {
+      router.push('/login')
+  
+    }
+  }, [])
 
 
   const handlePrevious = () => {
@@ -49,6 +58,12 @@ const Quiz = () => {
   };
 
 
+  useState(() => {
+    if(!router.isReady) return;
+    if (!pb.authStore.isValid) {
+      router.push('/login');
+    }
+  },  [router.isReady])
 
 
   return (

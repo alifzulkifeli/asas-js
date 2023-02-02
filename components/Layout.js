@@ -8,21 +8,18 @@ const Layout = ({ children }) => {
   const [navbar, setNavbar] = useState(false);
   const router = useRouter();
   const handleLogout = () => {
+    localStorage.removeItem('provider');
     pb.authStore.clear();
     router.push('/login');
   };
 
-
-  
-  const auth = () => {
-    if (!pb.authStore.isValid) {
-      router.push('/login');
-    }
-  }
+const han = () => {
+  console.log(localStorage.getItem('provider'));
+}
 
   return (
     // create header and footer using tailwind
-    <div  onLoad={auth} className=" ">
+    <div className=" ">
       
       <nav className="w-full bg-pink-900 shadow">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
@@ -30,6 +27,9 @@ const Layout = ({ children }) => {
             <div className="flex items-center justify-between md:py-3 py-2 md:block">
               <button onClick={() => router.reload('/')}>
                 <h2 className="text-2xl font-bold text-white">Asas Javascript</h2>
+              </button>
+              <button onClick={han}>
+                <h2 className="text-2xl font-bold text-white">Asas </h2>
               </button>
               <div className="md:hidden">
                 <button

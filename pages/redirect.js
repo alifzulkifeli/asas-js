@@ -40,6 +40,7 @@ const Redirect = () => {
       
     } catch (error) {
       pb.authStore.clear()
+      localStorage.removeItem('provider');
       router.push('/404');
     }
     
