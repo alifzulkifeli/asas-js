@@ -12,12 +12,11 @@ const Quiz = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
 
-    
+
 
   useEffect(() => {
     if (!localStorage.getItem('provider')) {
       router.push('/login')
-  
     }
   }, [])
 
@@ -41,6 +40,14 @@ const Quiz = () => {
     ]);
     setSelectedOptions([...selectedOptions]);
     console.log(selectedOptions);
+
+    currentQuestion + 1 === questions.length ? handleSubmitButton : handleNext
+
+    if (currentQuestion + 1 === questions.length) {
+
+    } else {
+      handleNext()
+    }
   };
 
   const handleSubmitButton = () => {
@@ -55,101 +62,100 @@ const Quiz = () => {
     }
     setScore(newScore);
     setShowScore(true);
-  };
-
-
-  useState(() => {
-    if(!router.isReady) return;
-    if (!pb.authStore.isValid) {
-      router.push('/login');
-    }
-  },  [router.isReady])
-
+  }
 
   return (
 
     <>
-    { questions ? (
-      <div className=" grid md:grid-cols-9" >
+      {questions ? (
+        <div className=" grid md:grid-cols-9 pt-10 lg:pt-32 " >
 
-      
-      <div className="col-span-2 hidden md:block bg-[#1A1A1A] h-screen w-full ">
-      </div>
-      <div className="flex flex-col md:col-span-5  flex-grow px-5 justify-center items-center pb-10 w-auto ">
-      
-      {showScore ? (
-        <h1 className="text-3xl font-semibold text-center text-white">
-          You scored {score} out of {questions.length}
-        </h1>
-      ) : (
-        <>
 
-          <div className="flex flex-col items-start w-full">
-            <h4 className="mt-10 text-xl text-white/60">
-              Question {currentQuestion + 1} of {questions.length}
-            </h4>
-            <div className="mt-4 text-2xl text-white">
-              {questions[currentQuestion].question}
-            </div>
+          <div className="col-span-2 hidden md:block bg-[#1A1A1A]  w-full ">
           </div>
+          <div className="flex flex-col md:col-span-5  flex-grow px-5 justify-center items-center pb-10 w-auto ">
+
+            {showScore ? (
+              <h1 className="text-3xl font-semibold text-center text-white">
+                You scored {score} out of {questions.length}
+              </h1>
+            ) : (
+              <>
+
+                <div className="flex flex-col items-start w-full">
+                  <h4 className="mt-10 text-xl text-white/60">
+                    Question {currentQuestion + 1} of {questions.length}
+                  </h4>
+                  <div className="mt-4 text-2xl text-white">
+                    {questions[currentQuestion].question}
+                  </div>
+                </div>
 
 
 
-          <div className="flex flex-col w-full display-linebreak">
-            {questions[currentQuestion].answerOptions.map((answer, index) => (
-              <div
-                key={index}
-                className="flex items-center w-full py-4 pl-5 m-2 ml-0 space-x-2 border-2 cursor-pointer border-white/10 rounded-xl bg-white/5"
-                onClick={(e) => handleAnswerOption(answer.answer)}
-              >
-                <input
-                  type="radio"
-                  name={answer.answer}
-                  value={answer.answer}
-                  onChange={(e) => handleAnswerOption(answer.answer)}
-                  checked={
-                    answer.answer === selectedOptions[currentQuestion]?.answerByUser
+                <div className="flex flex-col w-full display-linebreak">
+                  {questions[currentQuestion].answerOptions.map((answer, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center w-full py-4 pl-5 m-2 ml-0 space-x-2 border-2 cursor-pointer border-white/10 rounded-xl bg-white/5"
+                      onClick={(e) => handleAnswerOption(answer.answer)}
+                    >
+                      <input
+                        type="radio"
+                        name={answer.answer}
+                        value={answer.answer}
+                        onChange={(e) => handleAnswerOption(answer.answer)}
+                        checked={
+                          answer.answer === selectedOptions[currentQuestion]?.answerByUser
+                        }
+                        className="w-6 h-6 bg-black"
+                      />
+                      <p className="ml-6 text-white">{answer.answer}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex justify-between w-full mt-4 text-white">
+                 {
+                    currentQuestion !== 0 &&
+                    <button
+                    onClick={handlePrevious}
+                    className="w-[49%] py-3 border border-indigo-600 rounded-lg bg-transparent"
+                  >
+                    {"<<< Previous"}
+                  </button>
+                 }
+
+                  {currentQuestion + 1 === questions.length &&
+
+                    <button
+                      onClick={
+                        handleSubmitButton
+                      }
+                      className="w-[49%] py-3 bg-indigo-600 rounded-lg"
+                    >
+                      {"Submit >>>"}
+                    </button>
                   }
-                  className="w-6 h-6 bg-black"
-                />
-                <p className="ml-6 text-white">{answer.answer}</p>
-              </div>
-            ))}
-          </div>
 
-          <div className="flex justify-between w-full mt-4 text-white">
-            <button
-              onClick={handlePrevious}
-              className="w-[49%] py-3 bg-indigo-600 rounded-lg"
-            >
-              Previous
-            </button>
-            <button
-              onClick={
-                currentQuestion + 1 === questions.length ? handleSubmitButton : handleNext
-              }
-              className="w-[49%] py-3 bg-indigo-600 rounded-lg"
-            >
-              {currentQuestion + 1 === questions.length ? "Submit" : "Next"}
-            </button>
 
+
+                </div>
+              </>
+            )
+            }
 
           </div>
-        </>
-      )
-      }
-      
-    </div>
-    </div> 
-    ) : (
-     <div>
-        <h1 className="text-center text-white font-bold text-3xl " >Quiz not found</h1>
-     </div> 
-    )}
+        </div>
+      ) : (
+        <div>
+          <h1 className="text-center text-white font-bold text-3xl " >Quiz not found</h1>
+        </div>
+      )}
     </>
-   
 
-    );
+
+  );
 }
 
 export default Quiz;

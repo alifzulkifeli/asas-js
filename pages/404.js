@@ -1,6 +1,6 @@
 const f404 = () => {
   return ( 
-    <div class="relative h-screen overflow-hidden bg-indigo-900">
+    <div class="relative h-full overflow-hidden bg-indigo-900">
         <img src="8.svg" class="absolute object-cover w-screen h-full"/>
         <div class="absolute inset-0 bg-black opacity-25">
         </div>

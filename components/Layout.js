@@ -13,9 +13,7 @@ const Layout = ({ children }) => {
     router.push('/login');
   };
 
-const han = () => {
-  console.log(localStorage.getItem('provider'));
-}
+
 
   return (
     // create header and footer using tailwind
@@ -28,9 +26,7 @@ const han = () => {
               <button onClick={() => router.reload('/')}>
                 <h2 className="text-2xl font-bold text-white">Asas Javascript</h2>
               </button>
-              <button onClick={han}>
-                <h2 className="text-2xl font-bold text-white">Asas </h2>
-              </button>
+    
               <div className="md:hidden">
                 <button
                   className=" text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
@@ -118,8 +114,8 @@ const han = () => {
       {/* Replace with your content */}
       {/* <div className=" ">
         <div className='h-full' > */}
-      <div className='grid   h-screen bg-[#1A1A1A] content-center' >
-          {children}
+      <div className='grid   bg-[#1A1A1A] content-center' >
+      {children}
       </div>
  
 
@@ -132,7 +128,7 @@ const han = () => {
 
 
 
-      <nav className="w-full bg-pink-900 shadow ">
+      <nav className="w-full bg-pink-900 shadow footerWrap">
         <div className=' text-center text-white' >
           {/* create copyright footer */}
           <footer>&copy; Copyright {new Date().getFullYear()} Aliff</footer>

@@ -46,3 +46,16 @@ input[type="radio"]:checked:after {
 .display-linebreak {
   white-space: pre-line;
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+  background-color:#1A1A1A;
+}
+.footerWrap {
+  position: absolute;
+  
+  width: 100%;
+  bottom: 0;
+  left: 0;
+}
