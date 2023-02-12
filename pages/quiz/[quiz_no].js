@@ -68,7 +68,7 @@ const Quiz = () => {
 
     <>
       {questions ? (
-        <div className=" grid md:grid-cols-9 pt-10 lg:pt-32 " >
+        <div className=" grid md:grid-cols-9 pt-10  " >
 
 
           <div className="col-span-2 hidden md:block bg-[#1A1A1A]  w-full ">

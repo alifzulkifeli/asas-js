@@ -68,13 +68,13 @@ const Layout = ({ children }) => {
 
           <div>
             <div
-              className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
+              className={`flex-1 justify-self-center pb-3 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
                 }`}
             >
 
 
               <NoSSR>
-                <div className="mt-3 space-y-2 lg:hidden md:inline-block">
+                <div className="mt-3 space-y-2 md:hidden inline-block w-full">
                   {pb.authStore.isValid && (
                     <button
                       onClick={handleLogout}
