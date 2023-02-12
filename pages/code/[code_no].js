@@ -1,5 +1,5 @@
 import Playground from 'javascript-playgrounds'
-import * as data from './data'  
+import * as data from '../../components/data'  
 import { useRouter } from 'next/router';
 
 const Code = () => {
